@@ -1,4 +1,4 @@
-<div>
+<div align=center>
 
 # sake-repo2 (sake-report/repository)
 
@@ -28,9 +28,10 @@ docker compose up
 
 ### URLs
 
-|name|url|
-|client|http://localhost:3000|
-|api|http://localhost:3001|
+|  name  |          url          |
+| :----: | :-------------------: |
+| client | http://localhost:3000 |
+|  api   | http://localhost:3001 |
 
 ```sh
 # migrate
