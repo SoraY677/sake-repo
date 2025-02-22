@@ -1,0 +1,9 @@
+services:
+  api:
+    build:
+      context: api
+      dockerfile: dockerfile
+    command: ["yarn", "dev"]
+    ports:
+      - 3000:3000
+    tty: true
