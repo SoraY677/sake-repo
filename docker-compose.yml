@@ -6,6 +6,7 @@ services:
     command: ["yarn", "dev"]
     volumes:
       - ./client:/app
+      - node_modules_client:/app/node_modules
     ports:
       - 3000:3000
     depends_on:
@@ -17,8 +18,9 @@ services:
     command: ["yarn", "dev"]
     volumes:
       - ./api:/app
+      - node_modules_api:/app/node_modules
     ports:
-      - 3001:3001
+      - 3001:3000
     depends_on:
       - db
   db:
@@ -35,7 +37,7 @@ services:
       dockerfile: dockerfile
     volumes:
       - ./db/migration:/app
-      - node_modules:/app/node_modules
+      - node_modules-db-migation:/app/node_modules
     working_dir: /app
     environment:
       DB_FILE_PATH: "./data/main.sqlite3"
@@ -45,4 +47,7 @@ services:
       - db
 
 volumes:
-  node_modules: # 外部リソースとして非同期化
+  # 外部リソースとして非同期化
+  node_modules_client:
+  node_modules_api:
+  node_modules-db-migation:

@@ -26,13 +26,13 @@
 docker compose up
 ```
 
-```sh
-# migrate
-docker compose run --rm db-migration yarn migrate
-```
-
 ### URLs
 
 |name|url|
 |client|http://localhost:3000|
 |api|http://localhost:3001|
+
+```sh
+# migrate
+docker compose run --rm db-migration yarn migrate
+```
