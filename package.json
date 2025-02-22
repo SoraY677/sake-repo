@@ -1,7 +1,6 @@
 {
   "name": "sake-repo",
   "version": "1.0.0",
-  "scripts": {},
   "repository": "git@github.com:SoraY677/sake-repo.git",
   "author": "soray677 <soray677@outlook.com>",
   "license": "MIT"

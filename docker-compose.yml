@@ -26,5 +26,23 @@ services:
       context: db
       dockerfile: dockerfile
     volumes:
-      - ./data:/app/data:rw # 永続化
+      - ./data:/app/data # 永続化
+      - ./db/migration/result/:/app/migration/
     tty: true
+  db-migration:
+    build:
+      context: db/migration
+      dockerfile: dockerfile
+    volumes:
+      - ./db/migration:/app
+      - node_modules:/app/node_modules
+    working_dir: /app
+    environment:
+      DB_FILE_PATH: "./data/main.sqlite3"
+    command: ["cp", "./data/main.sqlite3", "./db/migration/result"]
+    tty: true
+    depends_on:
+      - db
+
+volumes:
+  node_modules: # 外部リソースとして非同期化
