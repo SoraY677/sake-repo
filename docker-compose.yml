@@ -1,9 +1,30 @@
 services:
+  client:
+    build:
+      context: client
+      dockerfile: dockerfile
+    command: ["yarn", "dev"]
+    volumes:
+      - ./client:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
   api:
     build:
       context: api
       dockerfile: dockerfile
     command: ["yarn", "dev"]
+    volumes:
+      - ./api:/app
     ports:
-      - 3000:3000
+      - 3001:3001
+    depends_on:
+      - db
+  db:
+    build:
+      context: db
+      dockerfile: dockerfile
+    volumes:
+      - ./data:/app/data:rw # 永続化
     tty: true
